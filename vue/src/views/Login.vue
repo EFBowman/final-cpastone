@@ -74,3 +74,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+#app {
+  
+}
+</style>
