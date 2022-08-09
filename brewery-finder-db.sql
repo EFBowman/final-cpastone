@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS beer;
 DROP TABLE IF EXISTS brewery;
 DROP TABLE IF EXISTS users;
 
-
 CREATE TABLE users(
 	--columns
 	user_id serial,
