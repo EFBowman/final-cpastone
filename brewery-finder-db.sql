@@ -3,16 +3,17 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS review;
 DROP TABLE IF EXISTS beer;
 DROP TABLE IF EXISTS brewery;
-DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS user;
 
-CREATE TABLE account(
+CREATE TABLE user(
 	--columns
-	account_id serial,
+	user_id serial,
 	username varchar(100) not null unique,
 	password varchar(50) not null unique,
-	role varchar(25) not null,
+	activated boolean,
+	authorities varchar(25) not null,
 	--constraints
-	CONSTRAINT pk_account primary key (account_id),
+	CONSTRAINT pk_account primary key (user_id),
 	CONSTRAINT check_min_length_password check (length(password) >= 8)
 );
 
@@ -31,7 +32,7 @@ CREATE TABLE brewery(
 	brewery_type varchar(50) not null,
 	--constraints
 	CONSTRAINT pk_brewery primary key (brewery_id),
-	CONSTRAINT fk_brewery_account foreign key (brewer_id) references account(account_id)
+	CONSTRAINT fk_brewery_account foreign key (brewer_id) references user(user_id)
 );
 
 CREATE TABLE beer(
@@ -51,7 +52,7 @@ CREATE TABLE beer(
 CREATE TABLE review (
 	--columns
 	review_id serial,
-	account_id int not null,
+	user_id int not null,
 	beer_id int not null,
 	beer_name varchar(50) not null,
 	brewery_name varchar(100) not null,
@@ -59,7 +60,7 @@ CREATE TABLE review (
 	rating int not null,
 	
 	CONSTRAINT pk_review primary key (review_id),
-	CONSTRAINT fk_review_account foreign key (account_id) references account(account_id),
+	CONSTRAINT fk_review_account foreign key (user_id) references user(user_id),
 	CONSTRAINT fk_review_beer foreign key (beer_id) references beer(beer_id)
 );
 

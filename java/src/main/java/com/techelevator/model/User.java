@@ -1,13 +1,14 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 public class User {
-
+   @JsonProperty("user_id")
    private int id;
    private String username;
    @JsonIgnore
