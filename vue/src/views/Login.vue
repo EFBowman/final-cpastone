@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Start A Tab</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -31,8 +31,12 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+        <button type="submit" id="signin" >Sign in</button>
+      <br>
+      <div class="need-account-div">
+      <router-link :to="{ name: 'register' }" id="need-account">Need an account?</router-link>
+      </div>
+    
     </form>
   </div>
 </template>
@@ -76,7 +80,30 @@ export default {
 </script>
 
 <style scoped>
-#app {
+#login {
+ 
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
   
+ 
 }
+.need-account-div{
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  }
+  
+
+
+h1{
+ text-align: center;
+}
+
+@media(max-width: 425px) {
+
+
+} 
 </style>
