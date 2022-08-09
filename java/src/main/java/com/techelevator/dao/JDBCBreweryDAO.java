@@ -4,7 +4,11 @@ import com.techelevator.model.Brewery;
 import com.techelevator.model.BreweryNotFoundException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+@Component
 public class JDBCBreweryDAO implements BreweryDAO {
 
     private final JdbcTemplate jdbcTemplate;
@@ -24,16 +28,25 @@ public class JDBCBreweryDAO implements BreweryDAO {
             throw new BreweryNotFoundException();
         }
     }
-
-    public void createNewBrewery(int breweryId, int brewerId, String name,
-                                 String phoneNumber, String emailAddress,
-                                 String address, String history,
-                                 String openHours, String image,
-                                 String breweryType) {
+    @Override
+    public void createNewBrewery(Brewery brewery) {
         String sql = "INSERT INTO brewery ( brewery_id,brewer_id,name,phone_number,email_address,address,history,open_hours,image,brewery_type " +
                     "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ;";
-        jdbcTemplate.queryForRowSet(sql,breweryId, brewerId , name, phoneNumber, emailAddress, address, history, openHours, image, breweryType );
-        
+        jdbcTemplate.queryForRowSet(sql,brewery.getBreweryId(), brewery.getBrewerId() , brewery.getName(), brewery.getPhoneNumber(), brewery.getEmailAddress(), brewery.getAddress(), brewery.getHistory(), brewery.getOpenHours(), brewery.getImage(), brewery.getBreweryType() );
+
+    }
+    @Override
+    public List<Brewery> getAllBreweries() {
+            List<Brewery> breweries = new ArrayList<>();
+
+            String sql = "SELECT * " +
+                         "FROM brewery ;";
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while(results.next()) {
+                Brewery brewery = mapRowToBrewery(results);
+                breweries.add(brewery);
+            }
+            return breweries;
     }
 
 
@@ -53,17 +66,6 @@ public class JDBCBreweryDAO implements BreweryDAO {
             brewery.setBreweryType(rs.getString("brewery_type"));
             return brewery;
         }
-
-
-//    private User mapRowToUser(SqlRowSet rs) {
-//        User user = new User();
-//        user.setId(rs.getInt("user_id"));
-//        user.setUsername(rs.getString("username"));
-//        user.setPassword(rs.getString("password_hash"));
-//        user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
-//        user.setActivated(true);
-//        return user;
-//    }
     }
 
 

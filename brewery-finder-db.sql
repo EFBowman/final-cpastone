@@ -3,9 +3,10 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS review;
 DROP TABLE IF EXISTS beer;
 DROP TABLE IF EXISTS brewery;
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS users;
 
-CREATE TABLE user(
+
+CREATE TABLE users(
 	--columns
 	user_id serial,
 	username varchar(100) not null unique,
@@ -32,7 +33,7 @@ CREATE TABLE brewery(
 	brewery_type varchar(50) not null,
 	--constraints
 	CONSTRAINT pk_brewery primary key (brewery_id),
-	CONSTRAINT fk_brewery_account foreign key (brewer_id) references user(user_id)
+	CONSTRAINT fk_brewery_account foreign key (brewer_id) references users(user_id)
 );
 
 CREATE TABLE beer(
@@ -60,7 +61,7 @@ CREATE TABLE review (
 	rating int not null,
 	
 	CONSTRAINT pk_review primary key (review_id),
-	CONSTRAINT fk_review_account foreign key (user_id) references user(user_id),
+	CONSTRAINT fk_review_account foreign key (user_id) references users(user_id),
 	CONSTRAINT fk_review_beer foreign key (beer_id) references beer(beer_id)
 );
 
