@@ -1,7 +1,9 @@
 <template>
+<body>
+<div class="bg">
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Start A Tab</h1>
+      <h1 id="header" class="h3 mb-3 font-weight-normal">The Usual?</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -12,7 +14,9 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
+      <div class="big-box">
+      <div class="box">
+      <label for="username" class="sr-only">Username:  </label>
       <input
         type="text"
         id="username"
@@ -22,7 +26,9 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      </div>
+      <div class="box">
+      <label for="password" class="sr-only">Password:  </label>
       <input
         type="password"
         id="password"
@@ -31,14 +37,19 @@
         v-model="user.password"
         required
       />
+      </div>
+      <div class="lil-box">
         <button type="submit" id="signin" >Sign in</button>
-      <br>
-      <div class="need-account-div">
-      <router-link :to="{ name: 'register' }" id="need-account">Need an account?</router-link>
+      </div>
+      <div class="lil-box">
+      <router-link :to="{ name: 'register' }" >Need an account?</router-link>
+      </div>
       </div>
     
     </form>
   </div>
+</div>
+</body>
 </template>
 
 <script>
@@ -79,31 +90,13 @@ export default {
 };
 </script>
 
-<style scoped>
-#login {
- 
-
+<style>
+.form-signin {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  
+  justify-content: center;
  
 }
-.need-account-div{
-  display: flex;
-  justify-content: center;
-  padding: 15px;
-  }
-  
-
-
-h1{
- text-align: center;
-}
-
-@media(max-width: 425px) {
-
-
-} 
 </style>
