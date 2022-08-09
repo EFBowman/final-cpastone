@@ -21,7 +21,7 @@ public class BreweryController {
             breweryDAO.createNewBrewery(brewery);
         }
 
-        @RequestMapping(path = "", method = RequestMethod.GET)
+        @RequestMapping(path = "/breweries", method = RequestMethod.GET)
         public List<Brewery> getAllBreweries() {
             return breweryDAO.getAllBreweries();
         }
