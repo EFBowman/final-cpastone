@@ -8,7 +8,7 @@ public interface BreweryDAO {
 
     Brewery getBreweryById(int id);
 
-     void createNewBrewery(Brewery brewery);
+    boolean createNewBrewery(Brewery brewery);
 
     List<Brewery> getAllBreweries();
 

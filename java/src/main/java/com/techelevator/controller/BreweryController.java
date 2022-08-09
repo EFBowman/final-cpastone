@@ -2,26 +2,28 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.BreweryDAO;
 import com.techelevator.model.Brewery;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-
+import java.util.List;
+@RequestMapping("/")
 @RestController
+@CrossOrigin
 public class BreweryController {
-
+        @Autowired
         private BreweryDAO breweryDAO;
 
-//    @RequestMapping(method = RequestMethod.POST)
-//    public Auction create(@RequestBody Auction auction) {
-//        return dao.create(auction);
-//    }
-
-        @RequestMapping(method = RequestMethod.POST)
+        @ResponseStatus(value = HttpStatus.CREATED)
+        @RequestMapping(path = "", method = RequestMethod.POST)
         public void create(@RequestBody @Valid Brewery brewery) {
             breweryDAO.createNewBrewery(brewery);
+        }
+
+        @RequestMapping(path = "", method = RequestMethod.GET)
+        public List<Brewery> getAllBreweries() {
+            return breweryDAO.getAllBreweries();
         }
 
 }

@@ -3,9 +3,7 @@ package com.techelevator.model;
 import javax.validation.constraints.NotBlank;
 
 public class Brewery {
-    @NotBlank
     private int breweryId;
-    @NotBlank
     private int brewerId;
     @NotBlank
     private String name;

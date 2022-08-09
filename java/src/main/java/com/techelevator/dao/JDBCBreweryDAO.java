@@ -29,18 +29,23 @@ public class JDBCBreweryDAO implements BreweryDAO {
         }
     }
     @Override
-    public void createNewBrewery(Brewery brewery) {
-        String sql = "INSERT INTO brewery ( brewery_id,brewer_id,name,phone_number,email_address,address,history,open_hours,image,brewery_type " +
-                    "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ;";
-        jdbcTemplate.queryForRowSet(sql,brewery.getBreweryId(), brewery.getBrewerId() , brewery.getName(), brewery.getPhoneNumber(), brewery.getEmailAddress(), brewery.getAddress(), brewery.getHistory(), brewery.getOpenHours(), brewery.getImage(), brewery.getBreweryType() );
-
+    public boolean createNewBrewery(Brewery brewery) {
+        String sql = "INSERT INTO brewery (brewer_id,name,phone_number,email_address,address,history,open_hours,image,brewery_type) " +
+                    "values (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING brewery_id;";
+       // jdbcTemplate.queryForRowSet(sql, brewery.getBrewerId() , brewery.getName(), brewery.getPhoneNumber(), brewery.getEmailAddress(), brewery.getAddress(), brewery.getHistory(), brewery.getOpenHours(), brewery.getImage(), brewery.getBreweryType() );
+        Integer newBreweryId;
+        newBreweryId = jdbcTemplate.queryForObject(sql, Integer.class, brewery.getBrewerId() , brewery.getName(), brewery.getPhoneNumber(), brewery.getEmailAddress(), brewery.getAddress(), brewery.getHistory(), brewery.getOpenHours(), brewery.getImage(), brewery.getBreweryType());
+        if(newBreweryId == null) {
+            return false;
+        }
+        return true;
     }
     @Override
     public List<Brewery> getAllBreweries() {
             List<Brewery> breweries = new ArrayList<>();
 
             String sql = "SELECT * " +
-                         "FROM brewery ;";
+                         "FROM brewery;";
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while(results.next()) {
                 Brewery brewery = mapRowToBrewery(results);
