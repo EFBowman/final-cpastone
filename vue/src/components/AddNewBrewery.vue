@@ -92,6 +92,8 @@ methods: {
                     }
                 }
             );
+            this.brewery = {};
+            alert("This brewery has been added!");
         }
     }
 }
