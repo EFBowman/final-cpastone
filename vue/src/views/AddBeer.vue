@@ -1,8 +1,10 @@
 <template>
+<body>
     <div>
-        <h1>Add Beer</h1>
-        <add-new-beer></add-new-beer>
+        
+        <add-new-beer />
     </div>
+    </body>
 </template>
 
 <script>
@@ -19,8 +21,8 @@ export default {
 
 body {
     background-image: url(../../public/img/beerFlight.jpg);
-    height: 100vh;
-    width: 100vw;
+    background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
 }
 </style>
