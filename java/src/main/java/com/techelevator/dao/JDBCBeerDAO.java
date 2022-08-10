@@ -60,6 +60,21 @@ public class JDBCBeerDAO implements BeerDAO {
         return beers;
     }
 
+    @Override
+    public List<Beer> getBeersByBreweryId(int id) {
+        List<Beer> beers = new ArrayList<>();
+
+        String sql = "SELECT * " +
+                " FROM beer " +
+                "WHERE brewery_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        while(results.next()) {
+            Beer beer = mapRowToBeer(results);
+            beers.add(beer);
+        }
+        return beers;
+    }
+
     private Beer mapRowToBeer(SqlRowSet results) {
         Beer newBeer = new Beer();
         newBeer.setBeerId(results.getInt("beer_id"));

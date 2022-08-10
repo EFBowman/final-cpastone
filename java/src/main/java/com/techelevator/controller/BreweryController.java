@@ -1,6 +1,8 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.BeerDAO;
 import com.techelevator.dao.BreweryDAO;
+import com.techelevator.model.Beer;
 import com.techelevator.model.Brewery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,7 @@ public class BreweryController {
         public List<Brewery> getAllBreweries() {
             return breweryDAO.getAllBreweries();
         }
+
 
 }
 

@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Beer;
 import com.techelevator.model.Brewery;
 import com.techelevator.model.BreweryNotFoundException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -53,8 +54,6 @@ public class JDBCBreweryDAO implements BreweryDAO {
             }
             return breweries;
     }
-
-
 
 
         private Brewery mapRowToBrewery(SqlRowSet rs){

@@ -13,5 +13,7 @@ public interface BeerDAO {
 
     List<Beer> getAllBeers();
 
+    List<Beer> getBeersByBreweryId(int id);
+
 }
 
