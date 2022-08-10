@@ -1,52 +1,53 @@
 <template>
-  <div>
-      <form v-on:submit.prevent="saveBrewery">
+  <div id="form-div">
+      <form id="new-brewery-form" v-on:submit.prevent="saveBrewery">
+          <h2>New Brewery Information</h2>
           <div>
            <label> Brewer ID : </label>
-           <input type="number" v-model="brewery.brewerId" />   
-         </div>
+           <input type="number" id="brewer-id" v-model="brewery.brewerId" />   
+          </div>
 
          <div>
            <label> Brewery Name : </label>
-           <input type="text" v-model="brewery.name" />   
-         </div>
+           <input type="text" id="brewery-name" v-model="brewery.name" />   
+          </div>
 
           <div>
            <label> Phone Number : </label>
-           <input type="text" v-model="brewery.phoneNumber" />   
-         </div>
+           <input type="text" id="phone-number" v-model="brewery.phoneNumber" />   
+          </div>
 
           <div>
            <label> Email Address : </label>
-           <input type="text" v-model="brewery.emailAddress" />   
-         </div>
+           <input type="text" id="email-address" v-model="brewery.emailAddress" />   
+          </div>
 
           <div>
            <label> Address : </label>
-           <input type="text" v-model="brewery.address" />   
-         </div>
+           <input type="text" id="address" v-model="brewery.address" />   
+          </div>
 
           <div>
            <label> History : </label>
-           <input type="text" v-model="brewery.history" />   
-         </div>
+           <input type="text" id="history" v-model="brewery.history" />   
+          </div>
 
           <div>
            <label> Open Hours: </label>
-           <input type="text" v-model="brewery.openHours" />   
-         </div>
+           <input type="text" id="open-hours" v-model="brewery.openHours" />   
+          </div>
 
           <div>
            <label> Images : </label>
-           <input type="text" v-model="brewery.image" />   
-         </div>
+           <img src="#" id="img" />   
+          </div>
 
           <div>
            <label> Brewery Type : </label>
-           <input type="text" v-model="brewery.breweryType" />   
-         </div>
+           <input type="text" id="brewery-type" v-model="brewery.breweryType" />   
+          </div>
 
-         <button type="submit">Submit</button>
+         <button id="submit-button" type="submit">Submit</button>
 
       </form>
   </div>
@@ -98,5 +99,43 @@ methods: {
 </script>
 
 <style>
+
+#new-brewery-form {
+    display: flexbox;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+label {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#form-div {
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+#submit-button {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 </style>

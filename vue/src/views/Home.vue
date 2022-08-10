@@ -1,12 +1,11 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+    <h1>Home</h1> &nbsp;
+    <router-link :to="{ name: 'add-brewery' }">Add A New Brewery</router-link>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "home"
 };
