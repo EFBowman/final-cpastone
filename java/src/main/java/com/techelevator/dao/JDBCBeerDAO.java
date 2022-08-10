@@ -5,10 +5,12 @@ import com.techelevator.model.Brewery;
 import com.techelevator.model.BreweryNotFoundException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JDBCBeerDAO implements BeerDAO {
 
     private final JdbcTemplate jdbcTemplate;
