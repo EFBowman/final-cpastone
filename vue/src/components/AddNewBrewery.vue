@@ -113,6 +113,7 @@ div {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-bottom: 2%;
 }
 
 label {
@@ -129,6 +130,13 @@ img {
 #form-div {
     margin-left: 30%;
     margin-right: 30%;
+    background-color: white;
+    opacity: 75%;
+    border-radius: 10px;
+    margin-top: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
 }
 
 #submit-button {
