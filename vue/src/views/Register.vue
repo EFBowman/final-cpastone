@@ -127,7 +127,6 @@ background-image: url(../../public/img/background.jpg);
 }
 .big-box {
   background-color: whitesmoke;
-  background-position: top;
   padding: 10px;
   border: 5px solid black;
   border-radius: 5px;
