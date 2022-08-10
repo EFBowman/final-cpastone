@@ -8,5 +8,13 @@ export default{
 
     createBrewery(brewery){
         return axios.post('', brewery);
+    },
+
+    getAllBeers(){
+        return axios.get('/beers');
+    },
+
+    createBeer(beer){
+        return axios.post('/beers', beer);
     }
 }
