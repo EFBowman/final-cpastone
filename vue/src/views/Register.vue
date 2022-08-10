@@ -127,9 +127,11 @@ background-image: url(../../public/img/background.jpg);
 }
 .big-box {
   background-color: whitesmoke;
+  background-position: top;
   padding: 10px;
   border: 5px solid black;
   border-radius: 5px;
+  opacity: 75%;
 }
 
 .form-register {
@@ -137,7 +139,7 @@ background-image: url(../../public/img/background.jpg);
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  
  
 }
 input:focus {

@@ -51,7 +51,6 @@ export default {
         return{
         errorMsg:"",
         beer: {
-            beerId:"", 
             breweryId:"",
             beerName:"", 
             beerDescription:"", 
