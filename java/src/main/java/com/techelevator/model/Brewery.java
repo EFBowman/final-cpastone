@@ -9,7 +9,9 @@ public class Brewery {
     private String name;
     private String phoneNumber;
     private String url;
-    private String address;
+    private String street;
+    private String city;
+    private String state;
     private String history;
     private String openHours;
     private String image;
@@ -56,12 +58,28 @@ public class Brewery {
         this.url = url;
     }
 
-    public String getAddress() {
-        return address;
+    public String getStreet() {
+        return street;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getHistory() {
@@ -98,7 +116,7 @@ public class Brewery {
 
     public Brewery(int breweryId, int brewerId, String name,
                    String phoneNumber, String url,
-                   String address, String history,
+                   String streetAddress, String city, String state, String history,
                    String openHours, String image,
                    String breweryType) {
         this.breweryId = breweryId;
@@ -106,7 +124,9 @@ public class Brewery {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.url = url;
-        this.address = address;
+        this.street = streetAddress;
+        this.city = city;
+        this.state = state;
         this.history = history;
         this.openHours = openHours;
         this.image = image;
@@ -115,14 +135,18 @@ public class Brewery {
 
     public Brewery(int breweryId, int brewerId, String name,
                    String phoneNumber,
-                   String address,
+                   String streetAddress,
+                   String city,
+                   String state,
                    String openHours,
                    String breweryType) {
         this.breweryId = breweryId;
         this.brewerId = brewerId;
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.address = address;
+        this.street = streetAddress;
+        this.city = city;
+        this.state = state;
         this.openHours = openHours;
         this.breweryType = breweryType;
     }

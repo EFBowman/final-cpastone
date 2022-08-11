@@ -12,4 +12,12 @@ public interface BreweryDAO {
 
     List<Brewery> getAllBreweries();
 
+    List<Brewery> getAllBreweriesByCity(String city);
+
+    List<Brewery> getAllBreweriesByState(String state);
+
+    List<Brewery> getAllBreweriesByName(String name);
+
+    List<Brewery> getAllBreweriesByType(String type);
+
 }

@@ -28,11 +28,13 @@ CREATE TABLE brewery(
 	name varchar(100) not null,
 	phone_number varchar(15) unique,
 	url varchar(250) unique,
-	address varchar(100) unique,
+	street varchar(100),
+	city varchar(50),
+	state varchar(50),
 	history varchar(2000),
-	open_hours varchar(300) ,
+	open_hours varchar(300),
 	image varchar(1000),
-	brewery_type varchar(50) not null,
+	brewery_type varchar(50),
 	--constraints
 	CONSTRAINT pk_brewery primary key (brewery_id),
 	CONSTRAINT fk_brewery_account foreign key (brewer_id) references users(user_id)
