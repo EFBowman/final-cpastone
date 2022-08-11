@@ -7,13 +7,10 @@ public class Brewery {
     private int brewerId;
     @NotBlank
     private String name;
-    @NotBlank
     private String phoneNumber;
-    private String emailAddress;
-    @NotBlank
+    private String url;
     private String address;
     private String history;
-    @NotBlank
     private String openHours;
     private String image;
     @NotBlank
@@ -51,12 +48,12 @@ public class Brewery {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getUrl() {
+        return url;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getAddress() {
@@ -100,7 +97,7 @@ public class Brewery {
     }
 
     public Brewery(int breweryId, int brewerId, String name,
-                   String phoneNumber, String emailAddress,
+                   String phoneNumber, String url,
                    String address, String history,
                    String openHours, String image,
                    String breweryType) {
@@ -108,7 +105,7 @@ public class Brewery {
         this.brewerId = brewerId;
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.emailAddress = emailAddress;
+        this.url = url;
         this.address = address;
         this.history = history;
         this.openHours = openHours;
