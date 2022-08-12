@@ -20,4 +20,6 @@ public interface BreweryDAO {
 
     List<Brewery> getAllBreweriesByType(String type);
 
+    void updateBrewery(Brewery brewery, int id);
+
 }

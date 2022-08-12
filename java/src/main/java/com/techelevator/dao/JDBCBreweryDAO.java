@@ -20,7 +20,7 @@ public class JDBCBreweryDAO implements BreweryDAO {
     public Brewery getBreweryById(int id) {
         String sql = "SELECT * " +
                 " FROM brewery " +
-                " WHERE user_id = ? ;";
+                " WHERE brewery_id = ? ;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         if (results.next()) {
             return mapRowToBrewery(results);
@@ -31,14 +31,15 @@ public class JDBCBreweryDAO implements BreweryDAO {
     @Override
     public boolean createNewBrewery(Brewery brewery) {
         String sql = "INSERT INTO brewery (brewer_id,name,phone_number,url,street,city,state,history,open_hours,image,brewery_type) " +
-                    "values (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING brewery_id;";
+                    "values (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?) RETURNING brewery_id;";
 
-        Integer newBreweryId;
-        newBreweryId = jdbcTemplate.queryForObject(sql, Integer.class, brewery.getBrewerId() , brewery.getName(), brewery.getPhoneNumber(), brewery.getUrl(), brewery.getStreet(), brewery.getCity(),
+        String newBreweryId;
+        newBreweryId = jdbcTemplate.queryForObject(sql, String.class, brewery.getBrewerId() , brewery.getName(), brewery.getPhoneNumber(), brewery.getUrl(), brewery.getStreet(), brewery.getCity(),
                 brewery.getState(), brewery.getHistory(), brewery.getOpenHours(), brewery.getImage(), brewery.getBreweryType());
         if(newBreweryId == null) {
             return false;
         }
+        brewery.setBreweryId(newBreweryId);
         return true;
     }
     @Override
@@ -106,11 +107,24 @@ public class JDBCBreweryDAO implements BreweryDAO {
         }
         return breweries;
     }
+    @Override
+    public void updateBrewery(Brewery brewery, int id){
+        String sql = "UPDATE brewery " +
+                    "SET brewer_id = ?, name = ?, phone_number = ? " +
+                    "url = ?, street = ?, city = ?, state = ?, history = ?, open_hours = ? " +
+                    "image = ?, brewery_type = ? " +
+                    "WHERE brewery_id = ?;";
+        jdbcTemplate.update(sql, brewery.getBrewerId(), brewery.getName(),
+                brewery.getPhoneNumber(), brewery.getUrl(), brewery.getStreet(), brewery.getCity(),
+                brewery.getState(), brewery.getHistory(), brewery.getOpenHours(), brewery.getImage(),
+                brewery.getBreweryType(), id);
+    }
+
 
 
         private Brewery mapRowToBrewery(SqlRowSet rs){
             Brewery brewery = new Brewery();
-            brewery.setBreweryId(rs.getInt("brewery_id"));
+            brewery.setBreweryId(rs.getString("brewery_id"));
             brewery.setBrewerId(rs.getInt("brewer_id"));
             brewery.setName(rs.getString("name"));
             brewery.setPhoneNumber(rs.getString("phone_number"));

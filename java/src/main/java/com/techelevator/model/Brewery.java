@@ -1,13 +1,18 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.validation.constraints.NotBlank;
 
 public class Brewery {
-    private int breweryId;
+    @JsonProperty("id")
+    private String breweryId;
     private int brewerId;
     @NotBlank
     private String name;
+    @JsonProperty ("phone")
     private String phoneNumber;
+    @JsonProperty ("website_url")
     private String url;
     private String street;
     private String city;
@@ -18,11 +23,11 @@ public class Brewery {
     @NotBlank
     private String breweryType;
 
-    public int getBreweryId() {
+    public String getBreweryId() {
         return breweryId;
     }
 
-    public void setBreweryId(int breweryId) {
+    public void setBreweryId(String breweryId) {
         this.breweryId = breweryId;
     }
 
@@ -114,7 +119,7 @@ public class Brewery {
         this.breweryType = breweryType;
     }
 
-    public Brewery(int breweryId, int brewerId, String name,
+    public Brewery(String breweryId, int brewerId, String name,
                    String phoneNumber, String url,
                    String streetAddress, String city, String state, String history,
                    String openHours, String image,
@@ -133,7 +138,7 @@ public class Brewery {
         this.breweryType = breweryType;
     }
 
-    public Brewery(int breweryId, int brewerId, String name,
+    public Brewery(String breweryId, int brewerId, String name,
                    String phoneNumber,
                    String streetAddress,
                    String city,

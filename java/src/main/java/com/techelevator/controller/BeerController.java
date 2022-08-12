@@ -37,4 +37,7 @@ public class BeerController {
         return beerDAO.getBeersByBreweryId(breweryId);
     }
 
+    @RequestMapping(path = "/beers/{id}", method = RequestMethod.GET)
+    public Beer getBeerById(@PathVariable int id){return beerDAO.getBeerById(id);}
+
 }

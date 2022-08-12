@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Beer;
+import com.techelevator.model.BeerNotFoundException;
 import com.techelevator.model.Brewery;
 import com.techelevator.model.BreweryNotFoundException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,29 +21,16 @@ public class JDBCBeerDAO implements BeerDAO {
     }
 
     @Override
-    public Beer getBeerById(int id){
-        String sql = "SELECT * " +
-                " FROM beer " +
-                " WHERE beer_id = ? ;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
-        if (results.next()) {
-            return mapRowToBeer(results);
-        } else {
-            throw new BreweryNotFoundException();
-        }
-    }
-
-    @Override
     public boolean createNewBeer(Beer beer){
-        String sql = "INSERT INTO beer (beer_id, brewery_id, beer_name, beer_description, image, abv, beer_type) " +
-                "values (?, ?, ?, ?, ?, ?, ?) RETURNING beer_id;";
+        String sql = "INSERT INTO beer (brewery_id, beer_name, beer_description, image, abv, beer_type) " +
+                "values (?, ?, ?, ?, ?, ?) RETURNING beer_id;";
         Integer newBeerId;
-        newBeerId = jdbcTemplate.queryForObject(sql, Integer.class, beer.getBeerId(), beer.getBreweryId(), beer.getBeerName(), beer.getBeerDescription(), beer.getImage(),
+        newBeerId = jdbcTemplate.queryForObject(sql, Integer.class, beer.getBreweryId(), beer.getBeerName(), beer.getBeerDescription(), beer.getImage(),
                  beer.getAbv(), beer.getBeerType());
-
         if(newBeerId == null) {
             return false;
         }
+        beer.setBeerId(newBeerId);
         return true;
     }
 
@@ -73,6 +61,20 @@ public class JDBCBeerDAO implements BeerDAO {
             beers.add(beer);
         }
         return beers;
+    }
+
+    @Override
+    public Beer getBeerById(int id){
+        String sql = "SELECT * " +
+                " FROM beer " +
+                "WHERE beer_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        if (results.next()) {
+            return mapRowToBeer(results);
+        } else {
+            throw new BeerNotFoundException();
+        }
+
     }
 
     private Beer mapRowToBeer(SqlRowSet results) {
