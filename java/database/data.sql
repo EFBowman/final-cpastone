@@ -5,7 +5,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpUL
 
 
 INSERT INTO brewery
-VALUES(1,1,'name','823498237948','beer.com','2384 main st','beertown','DC','history','9-5', 'beer.img', 'brewery');
+VALUES(1,1,'name','823498237948','beer.com','2384 main st','beertown','Ohio','history','9-5', 'beer.img', 'brewery');
 
 SELECT *
 FROM brewery;

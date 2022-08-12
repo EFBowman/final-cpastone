@@ -30,7 +30,24 @@ public class BreweryService {
         List<Brewery> breweryList = Arrays.asList(breweries);
         return breweryList;
     }
-
+    public List<Brewery> searchBreweriesByCity(String city) {
+        String url = baseURL + byCity + city;
+        Brewery[] breweries = restTemplate.getForObject(url, Brewery[].class);
+        List<Brewery> breweryList = Arrays.asList(breweries);
+        return breweryList;
+    }
+    public List<Brewery> searchBreweriesByName(String name) {
+        String url = baseURL + byName + name;
+        Brewery[] breweries = restTemplate.getForObject(url, Brewery[].class);
+        List<Brewery> breweryList = Arrays.asList(breweries);
+        return breweryList;
+    }
+    public List<Brewery> searchBreweriesByType(String type) {
+        String url = baseURL + byType + type;
+        Brewery[] breweries = restTemplate.getForObject(url, Brewery[].class);
+        List<Brewery> breweryList = Arrays.asList(breweries);
+        return breweryList;
+    }
 
 
 }

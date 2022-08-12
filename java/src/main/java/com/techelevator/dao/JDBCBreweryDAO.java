@@ -17,7 +17,7 @@ public class JDBCBreweryDAO implements BreweryDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
     @Override
-    public Brewery getBreweryById(int id) {
+    public Brewery getBreweryById(String id) {
         String sql = "SELECT * " +
                 " FROM brewery " +
                 " WHERE brewery_id = ? ;";
@@ -108,7 +108,7 @@ public class JDBCBreweryDAO implements BreweryDAO {
         return breweries;
     }
     @Override
-    public void updateBrewery(Brewery brewery, int id){
+    public void updateBrewery(Brewery brewery, String id){
         String sql = "UPDATE brewery " +
                     "SET brewer_id = ?, name = ?, phone_number = ? " +
                     "url = ?, street = ?, city = ?, state = ?, history = ?, open_hours = ? " +

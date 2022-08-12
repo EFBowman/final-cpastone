@@ -23,8 +23,18 @@
           </div>
 
           <div>
-           <label> Address : </label>
-           <input type="text" id="address" v-model="brewery.address" />   
+           <label> street : </label>
+           <input type="text" id="street" v-model="brewery.street" />   
+          </div>
+
+          <div>
+           <label> City : </label>
+           <input type="text" id="city" v-model="brewery.city" />   
+          </div>
+
+          <div>
+           <label> State : </label>
+           <input type="text" id="state" v-model="brewery.state" />   
           </div>
 
           <div>
@@ -66,7 +76,9 @@ export default {
             name:"",
             phoneNumber:"", 
             emailAddress:"", 
-            address:"", 
+            street:"",
+            city: "",
+            state: "", 
             history:"", 
             openHours:"", 
             image:"", 
