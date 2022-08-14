@@ -3,7 +3,11 @@ import axios from 'axios';
 
 export default{
     getAllBreweries(){
-        return axios.get('');
+        return axios.get('/breweries/search', {
+            params: {
+                searchTerms: this.$store.state.searchParams
+            }
+        });
     },
 
     createBrewery(brewery){

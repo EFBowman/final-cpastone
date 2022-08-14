@@ -21,6 +21,7 @@ public class Brewery {
     private String openHours;
     private String image;
     @NotBlank
+    @JsonProperty("brewery_type")
     private String breweryType;
 
     public String getBreweryId() {

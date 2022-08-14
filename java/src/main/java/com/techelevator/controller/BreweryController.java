@@ -4,6 +4,7 @@ import com.techelevator.dao.BeerDAO;
 import com.techelevator.dao.BreweryDAO;
 import com.techelevator.model.Beer;
 import com.techelevator.model.Brewery;
+import com.techelevator.model.SearchDTO;
 import com.techelevator.services.BreweryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,6 +34,25 @@ public class BreweryController {
                 List<Brewery> allBreweries = new ArrayList<>();
                 List<Brewery> apiBreweries = service.searchBreweriesByState(state);
                 List<Brewery> dbBreweries = breweryDAO.getAllBreweriesByState(state);
+                allBreweries.addAll(apiBreweries);
+                allBreweries.addAll(dbBreweries);
+                return allBreweries;
+        }
+
+        @RequestMapping(path="/breweries/search", method = RequestMethod.GET)
+        public List<Brewery> getBreweriesBySearchParams(@RequestParam String state, @RequestParam(value= "city", defaultValue = "", required = false) String city,
+                                                        @RequestParam(value= "breweryType", defaultValue = "", required = false) String type) {
+                List<Brewery> allBreweries = new ArrayList<>();
+                SearchDTO searchDTO = new SearchDTO();
+                searchDTO.setState(state);
+                if(!city.equals("")) {
+                      searchDTO.setCity(city);
+                }
+                if(!type.equals("")) {
+                      searchDTO.setBreweryType(type);
+                }
+                List<Brewery> apiBreweries = service.searchBreweriesBySearchParams(searchDTO);
+                List<Brewery> dbBreweries = breweryDAO.getAllBreweriesBySearchParams(searchDTO);
                 allBreweries.addAll(apiBreweries);
                 allBreweries.addAll(dbBreweries);
                 return allBreweries;

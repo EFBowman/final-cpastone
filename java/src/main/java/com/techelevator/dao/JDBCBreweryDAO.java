@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Brewery;
 import com.techelevator.model.BreweryNotFoundException;
+import com.techelevator.model.SearchDTO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -43,12 +44,25 @@ public class JDBCBreweryDAO implements BreweryDAO {
         return true;
     }
     @Override
-    public List<Brewery> getAllBreweries() {
+    public List<Brewery> getAllBreweriesBySearchParams(SearchDTO searchDTO) {
             List<Brewery> breweries = new ArrayList<>();
-
+            SqlRowSet results;
             String sql = "SELECT * " +
-                         "FROM brewery;";
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+                         "FROM brewery " +
+                         "WHERE state = ? ";
+
+            if(!searchDTO.getCity().equals("") && !searchDTO.getBreweryType().equals("")) {
+                sql += "AND city = ? AND brewery_type = ?;";
+                results = jdbcTemplate.queryForRowSet(sql, searchDTO.getState(), searchDTO.getCity(), searchDTO.getBreweryType());
+            } else if(!searchDTO.getBreweryType().equals("")) {
+                sql += "AND brewery_type = ?;";
+                results = jdbcTemplate.queryForRowSet(sql, searchDTO.getState() , searchDTO.getBreweryType());
+            } else if (!searchDTO.getCity().equals("")) {
+                sql += "AND city = ?;";
+                results = jdbcTemplate.queryForRowSet(sql, searchDTO.getState(), searchDTO.getCity());
+            } else {
+                results = jdbcTemplate.queryForRowSet(sql, searchDTO.getState());
+            }
             while(results.next()) {
                 Brewery brewery = mapRowToBrewery(results);
                 breweries.add(brewery);

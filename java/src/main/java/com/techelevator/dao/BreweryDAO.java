@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Brewery;
+import com.techelevator.model.SearchDTO;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public interface BreweryDAO {
 
     boolean createNewBrewery(Brewery brewery);
 
-    List<Brewery> getAllBreweries();
+    List<Brewery> getAllBreweriesBySearchParams(SearchDTO searchDTO);
 
     List<Brewery> getAllBreweriesByCity(String city);
 

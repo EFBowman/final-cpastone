@@ -75,7 +75,7 @@ export default {
             brewerId:"", 
             name:"",
             phoneNumber:"", 
-            emailAddress:"", 
+            url:"", 
             street:"",
             city: "",
             state: "", 
