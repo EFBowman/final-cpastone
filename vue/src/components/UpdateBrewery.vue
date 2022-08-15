@@ -1,7 +1,7 @@
 <template>
   <div id="form-div">
-      <form id="new-brewery-form" v-on:submit.prevent="saveBrewery">
-          <h2>New Brewery Information</h2>
+      <form id="new-brewery-form" v-on:submit.prevent="updateBrewery()">
+          <h2>Update Brewery Information</h2>
           <div>
            <label> Brewer ID : </label>
            <input type="number" id="brewer-id" v-model="brewery.brewerId" />   
@@ -67,7 +67,7 @@
 import breweryService from "@/services/BreweryService.js";
 
 export default {
-    name:"add-brewery", 
+    name:"update-brewery", 
     data() {
         return{
         errorMsg:"",
@@ -75,7 +75,7 @@ export default {
             brewerId:"", 
             name:"",
             phoneNumber:"", 
-            emailAddress:"", 
+            url:"", 
             street:"",
             city: "",
             state: "", 
@@ -86,9 +86,15 @@ export default {
         }
     }
 },
+props: ["existingBrewery"],
+created(){
+    if(this.existingBrewery) {
+        this.brewery = this.existingBrewery;
+    }
+},
 methods: {
-    saveBrewery() {
-        breweryService.createBrewery(this.brewery).then (
+    updateBrewery() {
+        breweryService.updateBrewery(this.brewery).then (
            (response) => {
                return response.status;
            }
@@ -104,8 +110,7 @@ methods: {
                     }
                 }
             );
-            this.brewery = {};
-            alert("This brewery has been added!");
+            alert("This brewery has been updated!");
         }
     }
 }

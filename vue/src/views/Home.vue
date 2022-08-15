@@ -3,6 +3,7 @@
     <h1>Home</h1> &nbsp;
     <router-link :to="{ name: 'add-brewery' }">Add A New Brewery</router-link>
     <router-link :to="{ name: 'add-beer' }">Add A Beer</router-link>
+    <router-link :to="{ name: 'update-brewery'}">Update A Brewery</router-link> <!-- make only for brewers -->
     <select class="state-selection" v-model="searchParams.state" v-on:click="saveSearchParams, searchForBreweries">
       <option disabled value="">Please select a state</option>
       <option value="Alabama">Alabama</option>	

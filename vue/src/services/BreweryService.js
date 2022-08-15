@@ -14,6 +14,10 @@ export default{
         return axios.post('', brewery);
     },
 
+    updateBrewery(brewery){
+        return axios.put('update-brewery/{breweryId}', brewery);
+    },
+
     getAllBeers(){
         return axios.get('/beers');
     },
