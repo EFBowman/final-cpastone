@@ -1,7 +1,9 @@
 package com.techelevator.model;
 
-public class SearchDTO {
+import javax.validation.constraints.NotBlank;
 
+public class SearchDTO {
+    @NotBlank
     private String state = "";
 
     private String city = "";

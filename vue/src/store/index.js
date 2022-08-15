@@ -46,6 +46,10 @@ export default new Vuex.Store({
     },
     SAVE_SEARCH_PARAMS(state, searchParams) {
       state.searchParams = searchParams;
+    },
+    SET_STORE_DATA(state, breweries){
+      state.breweries = breweries;
     }
   }
 })
+

@@ -1,7 +1,6 @@
 <template>
   <div class = "breweryListContainer">
-    <brewery-card v-for="brewery in $store.state.breweries" v-bind:key="brewery.breweryId"
-    v-bind:card="brewery"></brewery-card>
+    
     <table>
           <thead>
               <tr>
@@ -46,31 +45,34 @@
 </template>
 
 <script>
-import BreweryCard from '@/components/BreweryCard.vue'
+
 import BreweryService from '@/services/BreweryService.js'
 
 export default {
   name: 'list-breweries',
-  components: {
-      BreweryCard
-  },
+ 
   data() {
     return {
       breweries: [],
       errorMsg: ""
     }
+     
   },
+  //props: ["searchParams"],
   created(){
     this.loadBreweries();
   },
   methods: {
     loadBreweries(){
       BreweryService.getAllBreweries().then(
+        (response) => {
+          const breweries = response.data;
+          this.$store.commit("SET_STORE_DATA", breweries);
 
 
-      )
-      
-    }
+        })
+        }   
+
   }
 
 }

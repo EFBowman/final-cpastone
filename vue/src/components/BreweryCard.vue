@@ -3,7 +3,6 @@
       <div id="brewery-info">
             
         <h2> {{brewery.name}}</h2>
-        <img src="brewery.image"/>
         <h3> {{brewery.street}} {{brewery.city}}, {{brewery.state}} </h3>
         <h3> {{brewery.openHours}}</h3>
         <a href = "brewery.url" />

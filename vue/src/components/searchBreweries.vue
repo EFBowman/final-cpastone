@@ -1,4 +1,5 @@
 <template>
+<div>
 <div class ="search-table">
 <select class="state-selection" v-model="searchParams.state" v-on:click="saveSearchParams, searchForBreweries">
       <option disabled value="">Please select a state</option>
@@ -31,12 +32,21 @@
     </select>
     <button type="submit" v-on:submit.prevent="searchForBreweries, clearSearchParams"> Submit </button>
     </div>
+    <div class = "brewery-cards">
+      <brewery-card v-for="brewery in $store.state.breweries" v-bind:key="brewery.breweryId"
+    v-bind:card="brewery"></brewery-card>
+      </div>
+      </div>
 </template>
 
 <script>
-import breweryService from "@/services/BreweryService"
+import BreweryService from "@/services/BreweryService"
+import BreweryCard from '@/components/BreweryCard.vue'
 export default {
   name:'search-bar',
+   components: {
+      BreweryCard
+  },
    data() {
     return {
       searchParams: {
@@ -51,8 +61,15 @@ export default {
       this.$store.commit("SAVE_SEARCH_PARAMS", this.searchParams);
     },
     searchForBreweries() {
-      breweryService.getAllBreweriesBySearch();
+      const searchList = BreweryService.getBreweriesBySearch(this.searchParams);
+      this.$store.commit("SET_STORE_DATA", searchList);
+
     },
+     loadBreweriesByState(){
+          BreweryService.getBreweriesBySearch(this.searchParams);
+     },
+
+
     clearSearchParams() {
       this.searchParams = {};
     }

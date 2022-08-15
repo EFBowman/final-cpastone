@@ -40,17 +40,8 @@ public class BreweryController {
         }
 
         @RequestMapping(path="/breweries/search", method = RequestMethod.GET)
-        public List<Brewery> getBreweriesBySearchParams(@RequestParam String state, @RequestParam(value= "city", defaultValue = "", required = false) String city,
-                                                        @RequestParam(value= "breweryType", defaultValue = "", required = false) String type) {
+        public List<Brewery> getBreweriesBySearchParams(SearchDTO searchDTO) {
                 List<Brewery> allBreweries = new ArrayList<>();
-                SearchDTO searchDTO = new SearchDTO();
-                searchDTO.setState(state);
-                if(!city.equals("")) {
-                      searchDTO.setCity(city);
-                }
-                if(!type.equals("")) {
-                      searchDTO.setBreweryType(type);
-                }
                 List<Brewery> apiBreweries = service.searchBreweriesBySearchParams(searchDTO);
                 List<Brewery> dbBreweries = breweryDAO.getAllBreweriesBySearchParams(searchDTO);
                 allBreweries.addAll(apiBreweries);

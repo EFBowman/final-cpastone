@@ -2,14 +2,9 @@ import axios from 'axios';
 
 
 export default{
-    getBreweriesBySearch(){
-        return axios.get('/breweries/search', {
-            params: {
-                searchTerms: this.$store.state.searchParams
-            }
-        });
+    getBreweriesBySearch(searchParams){
+        return axios.get('/breweries/search', searchParams)
     },
-
     createBrewery(brewery){
         return axios.post('', brewery);
     },
@@ -28,4 +23,5 @@ export default{
     getAllBreweries(){
         return axios.get('/breweries')
     }
+    
 }
