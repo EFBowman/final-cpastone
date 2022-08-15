@@ -15,7 +15,7 @@ export default{
     },
 
     updateBrewery(brewery){
-        return axios.put('update-brewery/{breweryId}', brewery);
+        return axios.put('/update-brewery/{breweryId}', brewery);
     },
 
     getAllBeers(){

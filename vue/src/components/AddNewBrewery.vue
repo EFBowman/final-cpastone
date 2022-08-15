@@ -14,12 +14,12 @@
 
           <div>
            <label> Phone Number : </label>
-           <input type="text" id="phone-number" v-model="brewery.phoneNumber" />   
+           <input type="text" id="phone-number" v-model="brewery.phone" />   
           </div>
 
           <div>
-           <label> Email Address : </label>
-           <input type="text" id="email-address" v-model="brewery.emailAddress" />   
+           <label> Website URL : </label>
+           <input type="text" id="url" v-model="brewery.website_url" />   
           </div>
 
           <div>
@@ -54,7 +54,7 @@
 
           <div>
            <label> Brewery Type : </label>
-           <input type="text" id="brewery-type" v-model="brewery.breweryType" />   
+           <input type="text" id="brewery-type" v-model="brewery.brewery_type" />   
           </div>
 
          <button id="submit-button" type="submit">Submit</button>
@@ -74,15 +74,15 @@ export default {
         brewery: {
             brewerId:"", 
             name:"",
-            phoneNumber:"", 
-            emailAddress:"", 
+            phone:"", 
+            website_url:"", 
             street:"",
             city: "",
             state: "", 
             history:"", 
             openHours:"", 
             image:"", 
-            breweryType:"" 
+            brewery_type:"" 
         }
     }
 },
