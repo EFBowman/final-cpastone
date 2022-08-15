@@ -18,19 +18,19 @@
       <option value="Vermont">Vermont</option>	<option value="Virginia">Virginia</option>	<option value="Washington">Washington</option>	<option value="West Virginia">West Virginia</option>	<option value="Wisconsin">Wisconsin</option>	<option value="Wyoming">Wyoming</option>
     </select>
 
-    <input class="city-selection" v-model="searchParams.city" type="text" v-on:change="saveSearchParams" />
+    <input class="city-selection" v-model="searchParams.city" placeholder = "Search by city" type="text" v-on:change="saveSearchParams" />
 
     <select class="type-selection" v-model="searchParams.breweryType" v-on:click="saveSearchParams">
-      <option disabled value="">Please select a brewery type</option>
-      <option value ="micro">micro</option>
-      <option value ="nano">nano</option>
-      <option value ="regional">regional</option>
-      <option value="brewpub">brewpub></option>
-      <option value ="large">large</option>
-      <option value ="planning">planning</option>
-      <option value ="bar">bar</option>
-      <option value ="contract">contract</option>
-      <option value ="proprietor">proprietor</option>
+      <option disabled value="">Search by brewery type</option>
+      <option value ="micro">Microbrewery</option>
+      <option value ="nano">Nanobrewery</option>
+      <option value ="regional">Regional</option>
+      <option value="brewpub">Brewpub</option>
+      <option value ="large">Large</option>
+      <option value ="planning">Planning</option>
+      <option value ="bar">Bar</option>
+      <option value ="contract">Contract</option>
+      <option value ="proprietor">Proprietor</option>
     </select>
     <button type="submit" v-on:submit.prevent="searchForBreweries, clearSearchParams"> Submit </button>
     <div class="brewery-list">
