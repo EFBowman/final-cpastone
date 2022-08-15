@@ -1,20 +1,23 @@
 <template>
   <div class="BreweryContainer">
       <div id="brewery-info">
-            <tr>
-                <th> Name </th>
-                <th> Url </th>
-                <th> Location </th>
-                <th> Hours </th>
-                <th> History </th>
-                <th> Imagery </th>
-                <th> Contact Info </th>
-            </tr>
+            
+        <h2> {{brewery.name}}</h2>
+        <img src="brewery.image"/>
+        <h3> {{brewery.street}} {{brewery.city}}, {{brewery.state}} </h3>
+        <h3> {{brewery.openHours}}</h3>
+        <a href = "brewery.url" />
+            
+        </div>
         </div>
 </template>
 
 <script>
+
+
 export default {
+    name: "brewery-card",
+    props:["brewery"]
 
 }
 </script>

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 export default{
-    getAllBreweries(){
+    getBreweriesBySearch(){
         return axios.get('/breweries/search', {
             params: {
                 searchTerms: this.$store.state.searchParams
@@ -24,5 +24,8 @@ export default{
 
     createBeer(beer){
         return axios.post('/beers', beer);
+    },
+    getAllBreweries(){
+        return axios.get('/breweries')
     }
 }
