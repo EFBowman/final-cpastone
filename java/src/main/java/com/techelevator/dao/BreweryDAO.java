@@ -23,4 +23,6 @@ public interface BreweryDAO {
 
     void updateBrewery(Brewery brewery, String id);
 
+    List<Brewery> getAllBreweries();
+
 }

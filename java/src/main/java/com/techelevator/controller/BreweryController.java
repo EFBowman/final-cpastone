@@ -97,6 +97,10 @@ public class BreweryController {
         public void updateBrewery(@PathVariable String id, @RequestBody @Valid Brewery brewery)
         { breweryDAO.updateBrewery(brewery, id);}
 
+        @RequestMapping(path = "/breweries", method = RequestMethod.GET)
+        public List<Brewery> getAllBreweries(){ return breweryDAO.getAllBreweries();}
+
+
 
 }
 
