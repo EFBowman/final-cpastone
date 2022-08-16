@@ -39,10 +39,16 @@ public class BreweryController {
                 return allBreweries;
         }
 
-        @RequestMapping(path="/breweries/search", method = RequestMethod.GET)
-        public List<Brewery> getBreweriesBySearchParams(SearchDTO searchDTO) {
+        @RequestMapping(path="/breweries/search", method = RequestMethod.POST)
+        public List<Brewery> getBreweriesBySearchParams(@RequestBody @Valid SearchDTO searchDTO) {
                 List<Brewery> allBreweries = new ArrayList<>();
                 List<Brewery> apiBreweries = service.searchBreweriesBySearchParams(searchDTO);
+
+//                for(Brewery brewery : apiBreweries) {
+//                      breweryDAO.createNewBrewery(brewery);
+//                }
+
+
                 List<Brewery> dbBreweries = breweryDAO.getAllBreweriesBySearchParams(searchDTO);
                 allBreweries.addAll(apiBreweries);
                 allBreweries.addAll(dbBreweries);

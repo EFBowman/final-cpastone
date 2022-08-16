@@ -24,7 +24,7 @@ export default new Vuex.Store({
     searchParams: {
       state: "",
       city: "",
-      breweryType: ""
+      brewery_type: ""
     } 
   },
   mutations: {

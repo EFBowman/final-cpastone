@@ -25,4 +25,6 @@ public interface BreweryDAO {
 
     List<Brewery> getAllBreweries();
 
+    Brewery getBreweryByPhoneNumber(String phoneNumber);
+
 }

@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.validation.constraints.NotBlank;
 
 public class SearchDTO {
@@ -7,7 +9,7 @@ public class SearchDTO {
     private String state = "";
 
     private String city = "";
-
+    @JsonProperty("brewery_type")
     private String breweryType = "";
 
 

@@ -1,7 +1,7 @@
 <template>
 <div>
 <div class ="search-table">
-<select class="state-selection" v-model="searchParams.state" v-on:click="saveSearchParams, searchForBreweries">
+<select class="state-selection" v-model="searchParams.state">
       <option disabled value="">Please select a state</option>
       <option value="Alabama">Alabama</option>	
       <option value="Alaska">Alaska</option>	<option value="Arizona">Arizona</option>	<option value="Arkansas">Arkansas</option>	<option value="California">California</option>	<option value="Colorado">Colorado</option>
@@ -16,9 +16,9 @@
       <option value="Vermont">Vermont</option>	<option value="Virginia">Virginia</option>	<option value="Washington">Washington</option>	<option value="West Virginia">West Virginia</option>	<option value="Wisconsin">Wisconsin</option>	<option value="Wyoming">Wyoming</option>
     </select>
 
-    <input class="city-selection" v-model="searchParams.city" placeholder = "Search by city" type="text" v-on:change="saveSearchParams" />
+    <input class="city-selection" v-model="searchParams.city" placeholder = "Search by city" type="text" />
 
-    <select class="type-selection" v-model="searchParams.breweryType" v-on:click="saveSearchParams">
+    <select class="type-selection" v-model="searchParams.brewery_type">
       <option disabled value="">Search by brewery type</option>
       <option value ="micro">Microbrewery</option>
       <option value ="nano">Nanobrewery</option>
@@ -30,11 +30,11 @@
       <option value ="contract">Contract</option>
       <option value ="proprietor">Proprietor</option>
     </select>
-    <button type="submit" v-on:submit.prevent="searchForBreweries, clearSearchParams"> Submit </button>
+    <button v-on:click="searchForBreweries"> Submit </button>
     </div>
     <div class = "brewery-cards">
       <brewery-card v-for="brewery in $store.state.breweries" v-bind:key="brewery.breweryId"
-    v-bind:card="brewery"></brewery-card>
+    v-bind:brewery="brewery"></brewery-card>
       </div>
       </div>
 </template>
@@ -52,7 +52,7 @@ export default {
       searchParams: {
         state: "",
         city: "",
-        breweryType: ""
+        brewery_type: ""
       }
     }
   },
@@ -61,8 +61,19 @@ export default {
       this.$store.commit("SAVE_SEARCH_PARAMS", this.searchParams);
     },
     searchForBreweries() {
-      const searchList = BreweryService.getBreweriesBySearch(this.searchParams);
-      this.$store.commit("SET_STORE_DATA", searchList);
+
+      this.saveSearchParams();
+
+      BreweryService.getBreweriesBySearch(this.searchParams).then (
+        response => {
+          const searchList = response.data
+          this.$store.commit("SET_STORE_DATA", searchList);
+          this.clearSearchParams();
+        }
+      );
+      
+
+     
 
     },
      loadBreweriesByState(){

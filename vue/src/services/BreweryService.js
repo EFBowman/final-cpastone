@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default{
     getBreweriesBySearch(searchParams){
-        return axios.get('/breweries/search', searchParams)
+        return axios.post('/breweries/search', searchParams)
     },
     createBrewery(brewery){
         return axios.post('', brewery);

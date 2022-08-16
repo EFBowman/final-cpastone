@@ -19,6 +19,18 @@ public class JDBCBreweryDAO implements BreweryDAO {
     }
 
     @Override
+    public Brewery getBreweryByPhoneNumber(String phoneNumber) {
+        String sql = "SELECT * " +
+                "FROM brewery " +
+                "WHERE phone_number = ? ;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, phoneNumber);
+        if(results.next()) {
+            return mapRowToBrewery(results);
+        }
+        throw new BreweryNotFoundException();
+    }
+
+    @Override
     public List<Brewery> getAllBreweries(){
         List<Brewery> breweries = new ArrayList<>();
         String sql = "SELECT * " +
