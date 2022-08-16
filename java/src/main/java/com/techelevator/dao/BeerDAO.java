@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Beer;
+import com.techelevator.model.Review;
 import org.springframework.stereotype.Component;
 
 
@@ -15,6 +16,10 @@ public interface BeerDAO {
     List<Beer> getAllBeers();
 
     List<Beer> getBeersByBreweryId(int id);
+
+    List<Review> getAllReviewsByBeerId(int id);
+
+    boolean addReview(Review review);
 
 }
 

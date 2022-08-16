@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.BeerDAO;
 import com.techelevator.model.Beer;
 import com.techelevator.model.Brewery;
+import com.techelevator.model.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -39,5 +40,15 @@ public class BeerController {
 
     @RequestMapping(path = "/beers/{id}", method = RequestMethod.GET)
     public Beer getBeerById(@PathVariable int id){return beerDAO.getBeerById(id);}
+
+    @RequestMapping(path = "/beer/{id}/reviews", method = RequestMethod.GET)
+    public List<Review> getAllReviewsByBeerId(@PathVariable int id) {
+        return beerDAO.getAllReviewsByBeerId(id);
+    }
+
+    @RequestMapping(path = "/beer/reviews", method = RequestMethod.POST)
+    public void createReview(@RequestBody Review review) {
+        beerDAO.addReview(review);
+    }
 
 }
