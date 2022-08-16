@@ -43,12 +43,6 @@ public class BreweryController {
         public List<Brewery> getBreweriesBySearchParams(@RequestBody @Valid SearchDTO searchDTO) {
                 List<Brewery> allBreweries = new ArrayList<>();
                 List<Brewery> apiBreweries = service.searchBreweriesBySearchParams(searchDTO);
-
-//                for(Brewery brewery : apiBreweries) {
-//                      breweryDAO.createNewBrewery(brewery);
-//                }
-
-
                 List<Brewery> dbBreweries = breweryDAO.getAllBreweriesBySearchParams(searchDTO);
                 allBreweries.addAll(apiBreweries);
                 allBreweries.addAll(dbBreweries);
@@ -85,6 +79,7 @@ public class BreweryController {
                 return allBreweries;
         }
 
+        //Singular brewery in path
         @RequestMapping(path= "/brewery/{id}", method = RequestMethod.GET)
         public Brewery getBreweryById(@PathVariable String id){ return breweryDAO.getBreweryById(id);}
 
@@ -96,6 +91,13 @@ public class BreweryController {
 
         @RequestMapping(path = "/breweries", method = RequestMethod.GET)
         public List<Brewery> getAllBreweries(){ return breweryDAO.getAllBreweries();}
+
+
+        //Singular brewery in path
+        @RequestMapping(path = "/brewery/beer/{id}", method = RequestMethod.GET)
+        public String getBreweryNameByBeerId(@PathVariable int id) {
+                return breweryDAO.getBreweryNameByBeerId(id);
+        }
 
 
 

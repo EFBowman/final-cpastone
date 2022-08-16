@@ -14,23 +14,11 @@ export default{
         return axios.put('/update-brewery/{breweryId}', brewery);
     },
 
-    getAllBeers(){
-        return axios.get('/beers');
-    },
-
-    createBeer(beer){
-        return axios.post('/beers', beer);
-    },
-
     getAllBreweries(){
         return axios.get('/breweries')
     },
 
-    createReview(review) {
-        return axios.post('/beer/reviews', review);
-    },
-
-    getAllReviewsByBeerId(id) {
-        return axios.get(`/beer/${id}/reviews`);
+    getBreweryNameByBeerId(id) {
+        return axios.get(`/brewery/beer/${id}`);
     }
 }

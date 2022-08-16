@@ -51,4 +51,9 @@ public class BeerController {
         beerDAO.addReview(review);
     }
 
+    @RequestMapping(path = "/beer/{name}", method = RequestMethod.GET)
+    public int getBeerIdByName(@PathVariable String name) {
+        return beerDAO.getBeerIdByName(name);
+    }
+
 }

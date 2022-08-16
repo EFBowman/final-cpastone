@@ -52,7 +52,7 @@ export default {
         return{
         errorMsg:"",
         beer: {
-            breweryId:"",
+            brewery_id:"",
             beerName:"", 
             beerDescription:"", 
             image:"", 

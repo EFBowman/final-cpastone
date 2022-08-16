@@ -27,4 +27,6 @@ public interface BreweryDAO {
 
     Brewery getBreweryByPhoneNumber(String phoneNumber);
 
+    String getBreweryNameByBeerId(int id);
+
 }

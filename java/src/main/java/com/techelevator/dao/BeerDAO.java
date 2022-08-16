@@ -21,5 +21,7 @@ public interface BeerDAO {
 
     boolean addReview(Review review);
 
+    int getBeerIdByName(String name);
+
 }
 

@@ -87,6 +87,15 @@ public class JDBCBeerDAO implements BeerDAO {
         return reviews;
     }
 
+
+    @Override
+    public int getBeerIdByName(String name) {
+        String sql = "SELECT beer_id FROM beer " +
+                "WHERE beer_name = ?;";
+        int beerId = jdbcTemplate.queryForObject(sql, Integer.class, name);
+        return beerId;
+    }
+
     @Override
     public boolean addReview(Review review) {
         String sql = "INSERT INTO review (user_id, beer_id, beer_name, brewery_name, description, rating) " +

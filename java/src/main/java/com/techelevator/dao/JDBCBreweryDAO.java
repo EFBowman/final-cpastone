@@ -161,6 +161,15 @@ public class JDBCBreweryDAO implements BreweryDAO {
     }
 
 
+    @Override
+    public String getBreweryNameByBeerId(int id) {
+        String sql = "SELECT name FROM brewery " +
+                "JOIN beer ON beer.brewery_id = brewery.brewery_id " +
+                "WHERE beer_id = ?;";
+        String name = jdbcTemplate.queryForObject(sql, String.class, id);
+        return name;
+    }
+
 
         private Brewery mapRowToBrewery(SqlRowSet rs){
             Brewery brewery = new Brewery();
