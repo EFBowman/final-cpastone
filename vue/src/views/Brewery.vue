@@ -1,11 +1,11 @@
 <template>
-  <brewery-card />
+  <brewery-display />
 </template>
 
 <script>
-import BreweryCard from '../components/BreweryCard.vue'
+import BreweryDisplay from '../components/BreweryDisplay.vue'
 export default {
-  components: { BreweryCard },
+  components: {BreweryDisplay },
 
 }
 </script>
