@@ -7,6 +7,7 @@
 
 BEGIN TRANSACTION;
 
+
 DROP TABLE IF EXISTS review;
 DROP TABLE IF EXISTS beer;
 DROP TABLE IF EXISTS brewery;
@@ -68,6 +69,13 @@ CREATE TABLE review (
 	CONSTRAINT fk_review_account foreign key (user_id) references users(user_id),
 	CONSTRAINT fk_review_beer foreign key (beer_id) references beer(beer_id)
 );
+
+
+
+
+
+
+
 
 
 
