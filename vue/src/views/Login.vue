@@ -43,6 +43,7 @@
       </div>
       <div class="lil-box">
       <router-link :to="{ name: 'register' }" >Need an account?</router-link>
+      <router-link :to="{ name: 'home' }" >Continue as Guest</router-link>
       </div>
       </div>
     

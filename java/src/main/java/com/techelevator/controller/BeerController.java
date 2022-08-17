@@ -6,6 +6,7 @@ import com.techelevator.model.Brewery;
 import com.techelevator.model.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,7 +21,6 @@ public class BeerController {
     private BeerDAO beerDAO;
 
 
-    // @PreAuthorize("beer lover")
 
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping(path = "/beers", method = RequestMethod.POST)
@@ -46,6 +46,7 @@ public class BeerController {
         return beerDAO.getAllReviewsByBeerId(id);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @RequestMapping(path = "/beer/reviews", method = RequestMethod.POST)
     public void createReview(@RequestBody Review review) {
         beerDAO.addReview(review);

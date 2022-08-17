@@ -8,6 +8,7 @@ import com.techelevator.model.SearchDTO;
 import com.techelevator.services.BreweryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -23,21 +24,22 @@ public class BreweryController {
         @Autowired
         private BreweryService service;
 
+        @PreAuthorize("hasAnyRole('ADMIN')")
         @ResponseStatus(value = HttpStatus.CREATED)
         @RequestMapping(path = "", method = RequestMethod.POST)
         public void create(@RequestBody @Valid Brewery brewery) {
             breweryDAO.createNewBrewery(brewery);
         }
 
-        @RequestMapping(path = "/breweries/state={state}", method = RequestMethod.GET)
-        public List<Brewery> getAllBreweriesByState(@PathVariable String state) {
-                List<Brewery> allBreweries = new ArrayList<>();
-                List<Brewery> apiBreweries = service.searchBreweriesByState(state);
-                List<Brewery> dbBreweries = breweryDAO.getAllBreweriesByState(state);
-                allBreweries.addAll(apiBreweries);
-                allBreweries.addAll(dbBreweries);
-                return allBreweries;
-        }
+//        @RequestMapping(path = "/breweries/state={state}", method = RequestMethod.GET)
+//        public List<Brewery> getAllBreweriesByState(@PathVariable String state) {
+//                List<Brewery> allBreweries = new ArrayList<>();
+//                List<Brewery> apiBreweries = service.searchBreweriesByState(state);
+//                List<Brewery> dbBreweries = breweryDAO.getAllBreweriesByState(state);
+//                allBreweries.addAll(apiBreweries);
+//                allBreweries.addAll(dbBreweries);
+//                return allBreweries;
+//        }
 
         @RequestMapping(path="/breweries/search", method = RequestMethod.POST)
         public List<Brewery> getBreweriesBySearchParams(@RequestBody @Valid SearchDTO searchDTO) {
@@ -49,35 +51,35 @@ public class BreweryController {
                 return allBreweries;
         }
 
-        @RequestMapping(path = "/breweries/city={city}", method = RequestMethod.GET)
-        public List<Brewery> getAllBreweriesByCity(@PathVariable String city) {
-                List<Brewery> allBreweries = new ArrayList<>();
-                List<Brewery> apiBreweries = service.searchBreweriesByCity(city);
-                List<Brewery> dbBreweries = breweryDAO.getAllBreweriesByCity(city);
-                allBreweries.addAll(apiBreweries);
-                allBreweries.addAll(dbBreweries);
-                return allBreweries;
-        }
+//        @RequestMapping(path = "/breweries/city={city}", method = RequestMethod.GET)
+//        public List<Brewery> getAllBreweriesByCity(@PathVariable String city) {
+//                List<Brewery> allBreweries = new ArrayList<>();
+//                List<Brewery> apiBreweries = service.searchBreweriesByCity(city);
+//                List<Brewery> dbBreweries = breweryDAO.getAllBreweriesByCity(city);
+//                allBreweries.addAll(apiBreweries);
+//                allBreweries.addAll(dbBreweries);
+//                return allBreweries;
+//        }
 
-        @RequestMapping(path = "/breweries/name={name}", method = RequestMethod.GET)
-        public List<Brewery> getAllBreweriesByName(@PathVariable String name) {
-                List<Brewery> allBreweries = new ArrayList<>();
-                List<Brewery> apiBreweries = service.searchBreweriesByName(name);
-                List<Brewery> dbBreweries = breweryDAO.getAllBreweriesByName(name);
-                allBreweries.addAll(apiBreweries);
-                allBreweries.addAll(dbBreweries);
-                return allBreweries;
-        }
+//        @RequestMapping(path = "/breweries/name={name}", method = RequestMethod.GET)
+//        public List<Brewery> getAllBreweriesByName(@PathVariable String name) {
+//                List<Brewery> allBreweries = new ArrayList<>();
+//                List<Brewery> apiBreweries = service.searchBreweriesByName(name);
+//                List<Brewery> dbBreweries = breweryDAO.getAllBreweriesByName(name);
+//                allBreweries.addAll(apiBreweries);
+//                allBreweries.addAll(dbBreweries);
+//                return allBreweries;
+//        }
 
-        @RequestMapping(path = "/breweries/type={type}", method = RequestMethod.GET)
-        public List<Brewery> getAllBreweriesByType(@PathVariable String type) {
-                List<Brewery> allBreweries = new ArrayList<>();
-                List<Brewery> apiBreweries = service.searchBreweriesByType(type);
-                List<Brewery> dbBreweries = breweryDAO.getAllBreweriesByType(type);
-                allBreweries.addAll(apiBreweries);
-                allBreweries.addAll(dbBreweries);
-                return allBreweries;
-        }
+//        @RequestMapping(path = "/breweries/type={type}", method = RequestMethod.GET)
+//        public List<Brewery> getAllBreweriesByType(@PathVariable String type) {
+//                List<Brewery> allBreweries = new ArrayList<>();
+//                List<Brewery> apiBreweries = service.searchBreweriesByType(type);
+//                List<Brewery> dbBreweries = breweryDAO.getAllBreweriesByType(type);
+//                allBreweries.addAll(apiBreweries);
+//                allBreweries.addAll(dbBreweries);
+//                return allBreweries;
+//        }
 
         //Singular brewery in path
         @RequestMapping(path= "/brewery/{id}", method = RequestMethod.GET)
