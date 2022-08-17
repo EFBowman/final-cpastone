@@ -46,8 +46,8 @@ public class BreweryController {
                 List<Brewery> allBreweries = new ArrayList<>();
                 List<Brewery> apiBreweries = service.searchBreweriesBySearchParams(searchDTO);
                 List<Brewery> dbBreweries = breweryDAO.getAllBreweriesBySearchParams(searchDTO);
-                allBreweries.addAll(apiBreweries);
                 allBreweries.addAll(dbBreweries);
+                allBreweries.addAll(apiBreweries);
                 return allBreweries;
         }
 
