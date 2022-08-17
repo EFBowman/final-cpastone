@@ -4,7 +4,8 @@
     <table>
     <tbody>
       <tr v-for="beer in this.$store.state.beers" v-bind:key="beer.id">
-        <td>{{ beer.name }}</td>
+        <td>{{ beer.beerName }}</td>
+        <td>{{ beer.beerDescription }}</td>
         <td>{{ beer.abv }}</td>
         <td>{{ beer.beerType }}</td>
         </tr>

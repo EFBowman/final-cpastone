@@ -52,7 +52,7 @@ public class JDBCBeerDAO implements BeerDAO {
         String sql = "SELECT * " +
                 " FROM beer " +
                 "WHERE brewery_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, Integer.parseInt(id));
         while(results.next()) {
             Beer beer = mapRowToBeer(results);
             beers.add(beer);
