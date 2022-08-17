@@ -2,7 +2,7 @@
 <div>
     <h1> The Reviewery </h1>
     <h2> {{this.$store.state.beer.beerName}} </h2>
-    <add-review  v-if="ROLE_USER" />
+    <add-review  v-if="this.$store.state.user.authorities.name=='ROLE_USER'" />
     <review-display />
 </div>
 </template>
