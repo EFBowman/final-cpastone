@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import BeerService from '../services/BeerService.js'
 
 export default {
     name: "brewery-card",
@@ -19,7 +20,12 @@ export default {
     methods: {
       saveBrewery() {
         this.$store.commit("SET_CURRENT_BREWERY", this.brewery);
-        alert(this.brewery.id);
+        BeerService.getBeersByBreweryId(this.brewery.id).then(
+          (response) => {
+            const beers = response.data;
+            this.$store.commit("SET_BEER_DATA", beers);
+          }
+        )
         this.$router.push({name: 'brewery', params: {id: this.brewery.id}});
         }
     }

@@ -15,7 +15,7 @@ public interface BeerDAO {
 
     List<Beer> getAllBeers();
 
-    List<Beer> getBeersByBreweryId(int id);
+    List<Beer> getBeersByBreweryId(String id);
 
     List<Review> getAllReviewsByBeerId(int id);
 

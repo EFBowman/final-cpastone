@@ -46,7 +46,7 @@ public class JDBCBeerDAO implements BeerDAO {
     }
 
     @Override
-    public List<Beer> getBeersByBreweryId(int id) {
+    public List<Beer> getBeersByBreweryId(String id) {
         List<Beer> beers = new ArrayList<>();
 
         String sql = "SELECT * " +

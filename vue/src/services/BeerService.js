@@ -22,8 +22,8 @@ export default {
         return axios.get(`/beer/${name}`);
     },
 
-    getBeersByBreweryId(breweryId) {
-        return axios.get(`/breweries/${breweryId}/beers`)
+    getBeersByBreweryId(id) {
+        return axios.get(`/breweries/${id}`)
     }
 
 }

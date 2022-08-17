@@ -33,8 +33,8 @@ public class BeerController {
         return beerDAO.getAllBeers();
     }
 
-    @RequestMapping(path = "/breweries/{breweryId}/beers", method = RequestMethod.GET)
-    public List<Beer> getBeersByBreweryId(@PathVariable int breweryId) {
+    @RequestMapping(path = "/breweries/{breweryId}", method = RequestMethod.GET)
+    public List<Beer> getBeersByBreweryId(@PathVariable String breweryId) {
         return beerDAO.getBeersByBreweryId(breweryId);
     }
 
