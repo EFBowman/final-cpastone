@@ -10,6 +10,7 @@
         <td>{{ beer.abv }}</td>
         <td>{{ beer.beerType }}</td>
         </div>
+        <button v-on:click="saveBeer(beer)"> See Our Reviewery </button>
         </tr>
    </tbody>
   </table>
@@ -22,17 +23,16 @@ import BeerService from '../services/BeerService.js'
 
 export default {
   name: 'list-beers',
-   props:["beer"],
     methods: {
-      saveBeer() {
-        this.$store.commit("SET_CURRENT_BEER", this.beer);
-        BeerService.getAllReviewsByBeerId(this.beer.beerId).then(
+      saveBeer(beer) {
+        this.$store.commit("SET_CURRENT_BEER", beer);
+        BeerService.getAllReviewsByBeerId(beer.beerId).then(
           (response) => {
             const reviews = response.data;
             this.$store.commit("SET_REVIEWS_DATA", reviews);
           }
         )
-        this.$router.push({name: 'beer-reviews', params: {id: this.beer.beerId}});
+        this.$router.push({name: 'beer-reviews', params: {id: beer.beerId}});
         }
     }
 

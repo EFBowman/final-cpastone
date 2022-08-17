@@ -71,7 +71,7 @@ INSERT INTO beer (brewery_id, beer_name, beer_description, image, abv, beer_type
 INSERT INTO beer (brewery_id, beer_name, beer_description, image, abv, beer_type)
                   values ('5', 'Tapped Out', 'Uncreative but still tasty', 'tapped.jpg','5.5','Pale Ale');
 INSERT INTO brewery (brewery_id,brewer_id, name, phone_number, url, street, city, state, history, open_hours, image, brewery_type)
-						  VALUES('6',1, 'Citrus Sippin Columbus','614-564-8978','cscolumbusbeer.com','1515 Sly Street','Columbus','Ohio','A brewery for Coffee and Oranges.','12a-10p','image.png','brewpub');
+						  VALUES('6',1, 'Citrus Sippin'' Columbus','614-564-8978','cscolumbusbeer.com','1515 Sly Street','Columbus','Ohio','A brewery for Coffee and Oranges.','12a-10p','image.png','brewpub');
 INSERT INTO beer (brewery_id, beer_name, beer_description, image, abv, beer_type)
                   values ('6', 'Fruity Pebs', 'Tastes like the milk after you eat the cereal', 'pebs.jpg','2.8','Milk Stout');
 INSERT INTO beer (brewery_id, beer_name, beer_description, image, abv, beer_type)
@@ -140,22 +140,22 @@ INSERT INTO review (user_id, beer_id, beer_name, brewery_name, description, rati
     VALUES (1, 20, 'Tapped Out', 'Inconspicuous Outfit', 'A Pale Ale. Not much else to say, it''s just a beer.', 2);
 
 INSERT INTO review (user_id, beer_id, beer_name, brewery_name, description, rating)
-VALUES (1,21,'Fruity Pebs', 'Citrus Sippin''','Reminds me of the last drink of milk from a bowl of fruity pebbles.', 4 );
+VALUES (1,21,'Fruity Pebs', 'Citrus Sippin'' Columbus','Reminds me of the last drink of milk from a bowl of fruity pebbles.', 4 );
 
 INSERT INTO review (user_id, beer_id, beer_name, brewery_name, description, rating)
-VALUES (1,22,'Columbus Creamsickle', 'Citrus Sippin''','Sweet and Creamy', 5 );
+VALUES (1,22,'Columbus Creamsickle', 'Citrus Sippin'' Columbus','Sweet and Creamy', 5 );
 
 INSERT INTO review (user_id, beer_id, beer_name, brewery_name, description, rating)
-VALUES (1,23,'The Big Sip', 'Citrus Sippin''','It was okay , I prefer the Fruity Pebs', 4 );
+VALUES (1,23,'The Big Sip', 'Citrus Sippin'' Columbus','It was okay , I prefer the Fruity Pebs', 4 );
 
 INSERT INTO review (user_id, beer_id, beer_name, brewery_name, description, rating)
-VALUES (1,24,'OH', 'Citrus Sippin''','Great beer, perfect aroma and taste.', 5 );
+VALUES (1,24,'OH', 'Citrus Sippin'' Columbus','Great beer, perfect aroma and taste.', 5 );
 
 INSERT INTO review (user_id, beer_id, beer_name, brewery_name, description, rating)
-VALUES (1,25,'Orange Blossom Hefe', 'Citrus Sippin''','Amazing flavour, with a orangey aftertaste, helps the vomit not taste so bad after a long night out.', 5 );
+VALUES (1,25,'Orange Blossom Hefe', 'Citrus Sippin'' Columbus','Amazing flavour, with a orangey aftertaste, helps the vomit not taste so bad after a long night out.', 5 );
 
 INSERT INTO review (user_id, beer_id, beer_name, brewery_name, description, rating)
-VALUES (2,25,'Orange Blossom Hefe', 'Citrus Sippin''','Terrible! Tastes like I gargled orange scented toilet bowl cleaner. And some drunk guy kept trying to show me his lame casio watch the whole time.', 2 );
+VALUES (2,25,'Orange Blossom Hefe', 'Citrus Sippin'' Columbus','Terrible! Tastes like I gargled orange scented toilet bowl cleaner. And some drunk guy kept trying to show me his lame casio watch the whole time.', 2 );
 
 
 

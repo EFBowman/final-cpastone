@@ -1,13 +1,5 @@
 <template>
   <form v-on:submit.prevent="addNewReview">
-    <div class="form-element">
-        <label for="beer-name-selection">What beer did you drink?</label>
-        <select id="beer-name-selection" v-model="newReview.beer_name"> 
-            <option>------------</option>
-            <!-- beer names as options -->
-           
-        </select>
-    </div>
 
     <div class="form-element">
       <label for="rating">Rating:</label>
@@ -25,6 +17,7 @@
         <textarea id="beer-description" v-model="newReview.description"> </textarea>
     </div>
 
+    <button type="submit"> Submit </button>
 
   </form>
 </template>
@@ -37,11 +30,12 @@ export default {
     name: "add-review",
     data() {
         return {
+            errorMsg: "",
             newReview: {
-                user_id: "",
-                beer_id: "",
-                beer_name: "",
-                brewery_name: "",
+                userId: "",
+                beerId: "",
+                beerName: "",
+                breweryName: "",
                 description: "",
                 rating: 0
             }
@@ -73,16 +67,33 @@ export default {
     addNewReview() {
         //collecting info
         const userId = this.$store.state.user.user_id;
-        const beerId = this.getBeerIdFromBeerName(this.beer_name);
-        const breweryName = this.getBreweryNameByBeerId(beerId);
+        const beerId = this.$store.state.beer.beerId;
+        const breweryName = this.$store.state.brewery.name;
+        const beerName = this.$store.state.beer.beerName;
 
         //add to newReview
-        this.newReview.user_id = userId;
-        this.newReview.beer_id = beerId;
-        this.newReview.brewery_name = breweryName;
+        this.newReview.userId = userId;
+        this.newReview.beerId = beerId;
+        this.newReview.breweryName = breweryName;
+        this.newReview.beerName = beerName;
 
         this.$store.commit("ADD_REVIEW", this.newReview);
-        beerService.createReview(this.newReview);
+        beerService.createReview(this.newReview).then(
+            () => {
+                alert("Review Created")
+            }
+        ).catch(
+                error => {
+                    if(error.response) {
+                        this.errorMsg = error.response.statusText;
+                    } else if (error.request) {
+                        this.errorMsg = "We couldn't find the server";
+                    } else {
+                        this.errorMsg = "Error - we couldn't create the request";
+                    }
+                }
+            );
+
     }        
         
     }
