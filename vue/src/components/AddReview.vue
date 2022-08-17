@@ -5,6 +5,7 @@
         <select id="beer-name-selection" v-model="newReview.beer_name"> 
             <option>------------</option>
             <!-- beer names as options -->
+           
         </select>
     </div>
 
@@ -49,12 +50,24 @@ export default {
     methods: {
         //also auto populate beer_id from whichever beer_name is chosen
     getBeerIdFromBeerName(name) {
-        return beerService.getBeerIdFromBeerName(name);
+        return beerService.getBeerIdFromBeerName(name).then(
+            (response) => { 
+                const beerId = response.data;
+                return beerId;
+
+            });
     },
 
     //auto populate brewery name from which beer is chosen
     getBreweryNameByBeerId(id) {
-        return breweryService.getBreweryNameByBeerId(id);
+        return breweryService.getBreweryNameByBeerId(id).then(
+           (response) => {
+               const breweryName = response.data;
+               return breweryName;
+           }
+        )
+        
+        ;
     },
 
     addNewReview() {
