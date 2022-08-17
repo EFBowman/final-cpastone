@@ -146,7 +146,7 @@ INSERT INTO review (user_id, beer_id, beer_name, brewery_name, description, rati
 VALUES (1,22,'Columbus Creamsickle', 'Citrus Sippin''','Sweet and Creamy', 5 );
 
 INSERT INTO review (user_id, beer_id, beer_name, brewery_name, description, rating)
-VALUES (1,23,'The Pig Sip', 'Citrus Sippin''','It was okay , I prefer the Fruity Pebs', 4 );
+VALUES (1,23,'The Big Sip', 'Citrus Sippin''','It was okay , I prefer the Fruity Pebs', 4 );
 
 INSERT INTO review (user_id, beer_id, beer_name, brewery_name, description, rating)
 VALUES (1,24,'OH', 'Citrus Sippin''','Great beer, perfect aroma and taste.', 5 );
