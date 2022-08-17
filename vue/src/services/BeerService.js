@@ -20,6 +20,10 @@ export default {
 
     getBeerIdByName(name) {
         return axios.get(`/beer/${name}`);
+    },
+
+    getBeersByBreweryId(breweryId) {
+        return axios.get(`/breweries/${breweryId}/beers`)
     }
 
 }

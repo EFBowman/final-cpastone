@@ -32,10 +32,6 @@
                   <td>{{brewery.openHours}}</td>
                   <td>{{brewery.image}}</td>
                   <td>{{brewery.breweryType}}</td>
-                  <td>
-                      <router-link v-bind:to="{name: 'Edit', params: {breweryId: brewery.breweryId}}">Edit</router-link>
-                      &nbsp; &nbsp;
-                  </td>
               </tr>
           </tbody>
       </table>

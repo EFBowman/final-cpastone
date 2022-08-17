@@ -85,6 +85,7 @@ const router = new Router({
       path: "/brewery/:id",
       name: "brewery",
       component: Brewery,
+      props:true,
       meta: {
         requiresAuth: false
       }

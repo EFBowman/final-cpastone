@@ -2,15 +2,15 @@
  <div class="BreweryDisplay">
     <div id="brewery-display">
         <header>
-        <h1> {{this.$store.brewery.name}}</h1>
+        <h1> {{this.$store.state.brewery.name}}</h1>
         </header>
 <body>
       <div class="history">
-        <h2> {{this.$store.brewery.history}} </h2>
+        <h2> {{this.$store.state.brewery.history}} </h2>
       </div>  
-        <h3> {{this.$store.brewery.street}}, {{this.$store.brewery.city}}, {{this.$store.brewery.state}} </h3>
-        <h3> {{brewery.openHours}}</h3>
-        <h3> {{this.$store.brewery.phoneNumber}}</h3>
+        <h3> {{this.$store.state.brewery.street}}, {{this.$store.state.brewery.city}}, {{this.$store.state.brewery.state}} </h3>
+        <h3> {{this.$store.state.brewery.openHours}}</h3>
+        <h3> {{this.$store.state.brewery.phoneNumber}}</h3>
 </body>
         </div>
         </div>
@@ -28,11 +28,9 @@ export default {
 }
 header {
     display: flex;
-    background-color: goldenrod;
     justify-content: center;
     font-size: x-large;
     font-weight: bolder;
-    color: black;
 }
 body {
     background-color: whitesmoke;
