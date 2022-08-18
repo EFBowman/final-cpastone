@@ -18,7 +18,7 @@ export default {
 <style scoped>
 
 body {
-    background-image: url(../../public/img/brewery.png);
+    background-image: url(../../public/img/beerFlight.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

@@ -20,8 +20,8 @@ export default {
 <style>
 
 .ReviewContainer{
-  display: flexbox;
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
   justify-content: space-around;
   align-items: left;
   padding:10px;

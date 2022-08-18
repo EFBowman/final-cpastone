@@ -1,8 +1,10 @@
 <template>
 <div>
     <h1 id="the-reviewery"> The Reviewery </h1>
+    <div>
     <h2> {{this.$store.state.beer.beerName}} </h2>
     <add-review  v-if="isUser" />
+    </div>
     <review-display />
 </div>
 </template>
@@ -25,5 +27,7 @@ export default {
 #the-reviewery {
   justify-content: center;
 }
+
+
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <form v-on:submit.prevent="addNewReview">
+  <form id="review-form" v-on:submit.prevent="addNewReview">
 
     <div class="form-rating">
       <label for="rating">Rating:</label>
@@ -104,7 +104,7 @@ export default {
 <style>
 .form-rating {
     display: flex;
-    width: 15%;
+    width: 200px;
     margin-left: auto;
     margin-right: auto;
     color: white;
@@ -113,12 +113,16 @@ export default {
     color: white;
 }
 #beer-description {
-    height: 200px;
-    width: 50%;
+    height: 150px;
+    width: 200px;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 5px;
 }
 #submit-button {
+    width: 200px;
+    height: 20px;
     justify-content: center;
 }
+
 </style>
