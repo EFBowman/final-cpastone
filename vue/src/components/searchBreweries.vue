@@ -1,8 +1,8 @@
 <template>
 <div>
 <div class ="search-table">
-<select class="state-selection" v-model="searchParams.state">
-      <option disabled value="">Please select a state</option>
+<select class="state-selection" v-model="searchParams.state"> 
+      <option disabled value="">Please select a state</option> 
       <option value="Alabama">Alabama</option>	
       <option value="Alaska">Alaska</option>	<option value="Arizona">Arizona</option>	<option value="Arkansas">Arkansas</option>	<option value="California">California</option>	<option value="Colorado">Colorado</option>
       <option value="Connecticut">Connecticut</option>	<option value="Delaware">Delaware</option>	<option value="District of Columbia">District of Columbia</option>	<option value="Florida">Florida</option>	<option value="Georgia">Georgia</option>
@@ -92,5 +92,36 @@ export default {
 </script>
 
 <style scoped>
+.search-table{
+  display: flexbox;
+  flex-direction: row;
+  
+}
+.brewery-container{
+  display: flex;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center;
+  height:250px;
+  width:350px;
+  padding:10px;
+  outline: none !important;
+  border: 3px solid goldenrod;
+  border-radius: 5px;
+  font-family: Bebas Neue;
+}
+.brewery-cards{
+  flex-direction: row;
+  display:flex;
+  flex-wrap: wrap;
+  gap:10px;
+}
+h2{
+  font-family:Bebas Neue;
+  color:goldenrod;
+}
+
 
 </style>

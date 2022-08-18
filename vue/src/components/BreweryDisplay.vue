@@ -33,7 +33,7 @@ header {
     font-weight: bolder;
 }
 body {
-    background-color: whitesmoke;
+    background-color:  #3d3d3d;
 }
 
 </style>

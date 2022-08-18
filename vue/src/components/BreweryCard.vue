@@ -1,11 +1,11 @@
 <template>
-  <div class="BreweryContainer" v-on:click="saveBrewery()">
+  <div class="brewery-container" v-on:click="saveBrewery()">
       <div id="brewery-info">
         <h2> {{brewery.name}}</h2>
     
         <h3> {{brewery.street}} {{brewery.city}}, {{brewery.state}} </h3>
         <h3> {{brewery.openHours}}</h3>
-        <a href = "brewery.url" />
+        <p>{{brewery.website_url}} </p>
             
         </div>
         </div>
@@ -36,6 +36,13 @@ export default {
 </script>
 
 <style>
-
+h2{
+  font-family:Bebas Neue;
+  color:goldenrod;
+  
+}
+h3{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
 </style>

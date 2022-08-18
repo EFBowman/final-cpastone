@@ -111,26 +111,34 @@ export default {
 <style>
 body, html{
   height: 100vh;
+  
 }
 .bg{
-background-image: url(../../public/img/background.jpg);
+background-image: url(../../public/img/boxbg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 100%;
 }
+
 .box{
   display: flex;
   background-color: transparent;
   padding: 5px;
-  justify-content: space-between;
+  justify-content: center;
 }
 .big-box {
-  background-color: whitesmoke;
+  background-color: white;
   padding: 10px;
   border: 5px solid black;
   border-radius: 5px;
-  opacity: 75%;
+  margin-top: 3%;
+  width:300px;
+}
+.sr-only{
+  display: flex;
+  justify-content: center;
+  
 }
 
 .form-register {
@@ -148,6 +156,7 @@ input:focus {
   }
 .lil-box {
   display: flex;
+  justify-content: right;
   justify-content: space-evenly;
   padding: 5px;
 }
@@ -158,5 +167,6 @@ h1{
  text-align: center;
  font-family: Bebas Neue;
  font-size: 75px;
+ margin-bottom:10%;
 }
 </style>

@@ -42,8 +42,8 @@
         <button type="submit" id="signin" >Sign in</button>
       </div>
       <div class="lil-box">
-      <router-link :to="{ name: 'register' }" >Need an account?</router-link>
-      <router-link :to="{ name: 'home' }" >Continue as Guest</router-link>
+      <router-link :to="{ name: 'register' }"  class="need-account" >Need an account?</router-link>
+      <router-link :to="{ name: 'home' }" class="need-account" >Continue as Guest</router-link>
       </div>
       </div>
     
@@ -97,7 +97,11 @@ export default {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
- 
+}
+.need-account{
+  text-align: center;
+}
+h1{
+  display: flex;
 }
 </style>
