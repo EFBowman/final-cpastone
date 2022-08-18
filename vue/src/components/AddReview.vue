@@ -1,7 +1,7 @@
 <template>
   <form v-on:submit.prevent="addNewReview">
 
-    <div class="form-element">
+    <div class="form-rating">
       <label for="rating">Rating:</label>
       <select id="rating" v-model.number="newReview.rating">
         <option value="1">1 Star</option>
@@ -12,12 +12,12 @@
       </select>
     </div>
 
-    <div class="form-element">
+    <div class="form-description">
         <label for="beer-description">How'd you like it?</label>
         <textarea id="beer-description" v-model="newReview.description"> </textarea>
     </div>
 
-    <button type="submit"> Submit </button>
+    <button id="submit-button" type="submit"> Submit </button>
 
   </form>
 </template>
@@ -102,5 +102,23 @@ export default {
 </script>
 
 <style>
-
+.form-rating {
+    display: flex;
+    width: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+.form-description {
+    color: white;
+}
+#beer-description {
+    height: 200px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#submit-button {
+    justify-content: center;
+}
 </style>

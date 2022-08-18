@@ -2,15 +2,15 @@
 <div class = "beerListContainer">
 
     <table>
-    <tbody>
-      <tr v-for="beer in this.$store.state.beers" v-bind:key="beer.beerId" >
+    <tbody class="beer-info">
+      <tr class="beer-card" v-for="beer in this.$store.state.beers" v-bind:key="beer.beerId" >
         <div>
-        <td>{{ beer.beerName }}</td>
-        <td>{{ beer.beerDescription }}</td>
-        <td>{{ beer.abv }}</td>
-        <td>{{ beer.beerType }}</td>
+        <td>Name: {{ beer.beerName }}</td>
+        <td>Description: {{ beer.beerDescription }}</td>
+        <td>ABV: {{ beer.abv }}</td>
+        <td>Style: {{ beer.beerType }}</td>
         </div>
-        <button v-on:click="saveBeer(beer)"> See Our Reviewery </button>
+        <button v-on:click="saveBeer(beer)"> See Reviews </button>
         </tr>
    </tbody>
   </table>
@@ -40,5 +40,29 @@ export default {
 </script>
 
 <style>
+
+.beer-card {
+   display: flex;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center;
+  height:150px;
+  width:350px;
+  padding:10px;
+  outline: none !important;
+  border: 3px solid goldenrod;
+  border-radius: 5px;
+  font-family: Bebas Neue;
+}
+
+.beer-info{
+  flex-direction: row;
+  display:flex;
+  flex-wrap: wrap;
+  gap:10px;
+}
+
 
 </style>
