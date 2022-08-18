@@ -20,18 +20,18 @@
           </thead>
            <tbody>
               <tr v-for="brewery in $store.state.breweries" v-bind:key="brewery.breweryId">
-                  <td>{{brewery.breweryId}}</td>
+                  <td>{{brewery.id}}</td>
                   <td>{{brewery.brewerId}}</td>
                   <td>{{brewery.name}}</td>
-                  <td>{{brewery.phoneNumber}}</td>
-                  <td>{{brewery.url}}</td>
+                  <td>{{brewery.phone}}</td>
+                  <td>{{brewery.website_url}}</td>
                   <td>{{brewery.street}}</td>
                   <td>{{brewery.city}}</td>
                   <td>{{brewery.state}}</td>
                   <td>{{brewery.history}}</td>
                   <td>{{brewery.openHours}}</td>
                   <td>{{brewery.image}}</td>
-                  <td>{{brewery.breweryType}}</td>
+                  <td>{{brewery.brewery_type}}</td>
               </tr>
           </tbody>
       </table>
@@ -54,7 +54,6 @@ export default {
     }
      
   },
-  //props: ["searchParams"],
   created(){
     this.loadBreweries();
   },

@@ -24,7 +24,7 @@ public class BreweryController {
         @Autowired
         private BreweryService service;
 
-        @PreAuthorize("hasAnyRole('ADMIN')")
+        @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
         @ResponseStatus(value = HttpStatus.CREATED)
         @RequestMapping(path = "", method = RequestMethod.POST)
         public void create(@RequestBody @Valid Brewery brewery) {

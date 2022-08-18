@@ -60,13 +60,13 @@ public class JDBCBreweryDAO implements BreweryDAO {
         String sql = "INSERT INTO brewery (brewer_id,name,phone_number,url,street,city,state,history,open_hours,image,brewery_type) " +
                     "values (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?) RETURNING brewery_id;";
 
-        String newBreweryId;
-        newBreweryId = jdbcTemplate.queryForObject(sql, String.class, brewery.getBrewerId() , brewery.getName(), brewery.getPhoneNumber(), brewery.getUrl(), brewery.getStreet(), brewery.getCity(),
+        int intBreweryId = jdbcTemplate.queryForObject(sql, Integer.class, brewery.getBrewerId() , brewery.getName(), brewery.getPhoneNumber(), brewery.getUrl(), brewery.getStreet(), brewery.getCity(),
                 brewery.getState(), brewery.getHistory(), brewery.getOpenHours(), brewery.getImage(), brewery.getBreweryType());
-        if(newBreweryId == null) {
+        String strBreweryId = Integer.toString(intBreweryId);
+        if(strBreweryId == null) {
             return false;
         }
-        brewery.setBreweryId(newBreweryId);
+        brewery.setBreweryId(strBreweryId);
         return true;
     }
     @Override

@@ -32,7 +32,7 @@
     </select>
     <button v-on:click="searchForBreweries"> Submit </button>
     </div>
-    <div class = "brewery-cards">
+    <div class = "brewery-cards" v-if="this.hasSearched">
       <brewery-card v-for="brewery in $store.state.breweries" v-bind:key="brewery.breweryId"
     v-bind:brewery="brewery"></brewery-card>
       </div>
@@ -49,6 +49,7 @@ export default {
   },
    data() {
     return {
+      hasSearched: false,
       searchParams: {
         state: "",
         city: "",
@@ -61,7 +62,7 @@ export default {
       this.$store.commit("SAVE_SEARCH_PARAMS", this.searchParams);
     },
     searchForBreweries() {
-
+    
       this.saveSearchParams();
 
       BreweryService.getBreweriesBySearch(this.searchParams).then (
@@ -69,6 +70,7 @@ export default {
           const searchList = response.data
           this.$store.commit("SET_STORE_DATA", searchList);
           this.clearSearchParams();
+            this.hasSearched = true;
         }
       );
       

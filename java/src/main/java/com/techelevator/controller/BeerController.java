@@ -46,7 +46,7 @@ public class BeerController {
         return beerDAO.getAllReviewsByBeerId(id);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @RequestMapping(path = "/beer/reviews", method = RequestMethod.POST)
     public void createReview(@RequestBody Review review) {
         beerDAO.addReview(review);

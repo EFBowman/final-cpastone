@@ -3,42 +3,42 @@
       <form id="new-brewery-form" v-on:submit.prevent="saveBrewery">
           <h2>New Brewery Information</h2>
           <div>
-           <label> Brewer ID : </label>
+           <label> Brewer ID: </label>
            <input type="number" id="brewer-id" v-model="brewery.brewerId" />   
           </div>
 
          <div>
-           <label> Brewery Name : </label>
+           <label> Brewery Name: </label>
            <input type="text" id="brewery-name" v-model="brewery.name" />   
           </div>
 
           <div>
-           <label> Phone Number : </label>
+           <label> Phone Number: </label>
            <input type="text" id="phone-number" v-model="brewery.phone" />   
           </div>
 
           <div>
-           <label> Website URL : </label>
+           <label> Website URL: </label>
            <input type="text" id="url" v-model="brewery.website_url" />   
           </div>
 
           <div>
-           <label> street : </label>
+           <label> Street: </label>
            <input type="text" id="street" v-model="brewery.street" />   
           </div>
 
           <div>
-           <label> City : </label>
+           <label> City: </label>
            <input type="text" id="city" v-model="brewery.city" />   
           </div>
 
           <div>
-           <label> State : </label>
+           <label> State: </label>
            <input type="text" id="state" v-model="brewery.state" />   
           </div>
 
           <div>
-           <label> History : </label>
+           <label> History: </label>
            <input type="text" id="history" v-model="brewery.history" />   
           </div>
 
@@ -48,12 +48,12 @@
           </div>
 
           <div>
-           <label> Images : </label>
+           <label> Images: </label>
            <img src="#" id="img" />   
           </div>
 
           <div>
-           <label> Brewery Type : </label>
+           <label> Brewery Type: </label>
            <input type="text" id="brewery-type" v-model="brewery.brewery_type" />   
           </div>
 
@@ -90,7 +90,11 @@ methods: {
     saveBrewery() {
         breweryService.createBrewery(this.brewery).then (
            (response) => {
-               return response.status;
+               if(response.status === 200 || response.status === 201) {
+                alert("This brewery has been added!");
+               } else {
+               return this.response.statusText;
+               }
            }
         )
         .catch(
@@ -105,7 +109,6 @@ methods: {
                 }
             );
             this.brewery = {};
-            alert("This brewery has been added!");
         }
     }
 }
