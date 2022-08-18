@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1 class="home-header">home</h1> &nbsp;
-    <router-link :to="{ name: 'add-brewery' }"  v-if="isAdmin" >Add A New Brewery</router-link>
+    <router-link class="link" :to="{ name: 'add-brewery' }"  v-if="isAdmin" >Add A New Brewery</router-link>
     <!-- <router-link :to="{ name: 'add-beer' }">Add A Beer</router-link> -->
      <div class="search-breweries">
       <search-breweries v-if="!isAdmin"/>

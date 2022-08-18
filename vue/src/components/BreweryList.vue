@@ -1,5 +1,5 @@
 <template>
-  <div class = "breweryListContainer">
+  <div class = "brewery-list-container">
     
     <table>
           <thead>
@@ -74,5 +74,8 @@ export default {
 </script>
 
 <style>
-
+.brewery-list-container {
+  background-color: white;
+  opacity: 75%;
+}
 </style>
