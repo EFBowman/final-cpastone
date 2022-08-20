@@ -47,10 +47,10 @@
            <input type="text" id="open-hours" v-model="brewery.openHours" />   
           </div>
 
-          <div>
+       <!--   <div>
            <label> Images: </label>
            <img src="#" id="img" />   
-          </div>
+          </div> -->
 
           <div>
            <label> Brewery Type: </label>
